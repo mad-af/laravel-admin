@@ -1,37 +1,57 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<html lang="en">
 
-        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<head>
 
-        <title>@yield('title')</title>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link activeq" href="{{ url('/') }}">Home</a>
-                        <a class="nav-item nav-link" href="{{ url('/about') }}">About</a>
-                        <a class="nav-item nav-link" href="{{ url('/mahasiswa') }}">Mahasiswa</a>
-                        <a class="nav-item nav-link" href="{{ url('/students') }}">Students</a>
-                   </div>
-                </div>
-            </div>
-        </nav>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-        @yield('container')
+  <title>SB Admin 2 - Dashboard</title>
 
-    </body>
+  <!-- Custom fonts for this template-->
+  <script src="https://kit.fontawesome.com/2c968ed82e.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{{ URL::asset('sbadmin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+  <link href="{{ URL::asset('sbadmin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <x-sidebar />
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <x-navbar /> 
+        @yield('content')
+      </div>
+      <x-footer />
+    </div>
+  </div>
+
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+  <x-modal-logout/>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{ URL::asset('sbadmin/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ URL::asset('sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="{{ URL::asset('sbadmin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="{{ URL::asset('sbadmin/js/sb-admin-2.min.js') }}"></script>
+  <!-- Page level plugins -->
+  <script src="{{ URL::asset('sbadmin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ URL::asset('sbadmin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+  <script src="{{ URL::asset('sbadmin/vendor/chart.js/Chart.min.js') }}"></script>
+  <!-- Page level custom scripts -->
+  <script src="{{ URL::asset('sbadmin/js/demo/chart-area-demo.js') }}"></script>
+  <script src="{{ URL::asset('sbadmin/js/demo/chart-pie-demo.js') }}"></script>
+</body>
+
 </html>
