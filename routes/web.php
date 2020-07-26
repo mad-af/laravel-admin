@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('content.index');
 });
+
+// Banner
+Route::get('/banner', 'BannersController@index');
+Route::get('/banner/create', 'BannersController@create');
+
+Route::post('/banner', 'BannersController@store');
+Route::get('/banner/{banner}/edit', 'BannersController@edit');
+Route::patch('/banner/{banner}', 'BannersController@update');
+Route::delete('/banner/{banner}', 'BannersController@destroy');
