@@ -35,13 +35,13 @@
                 <th scope="row">{{ $loop->iteration }}</th>
                 <td>{{ $data->name }}</td>
                 <td>{{ $data->description }}</td>
-                <td>{{ $data->image }}</td>
+                <td><img width="150px" src="{{ url('/dataFile/'.$data->image) }}"></td>
                 <td>
                     <a href="/banner/{{ $data->id }}/edit" class="btn btn-sm btn-warning">Edit</a>
                     <form action="/banner/{{ $data->id }}" method="post" class="d-inline">
                         @csrf
                         @method('delete')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
                 </td>
                 </tr>

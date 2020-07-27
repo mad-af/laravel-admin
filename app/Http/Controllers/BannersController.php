@@ -39,14 +39,17 @@ class BannersController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'image' => 'required'
+            'image' => 'required|image|mimes:jpeg,bmp,png|max:5000',
         ]);
-
+        
         Banner::create([
             'name' => $request->name,
             'description' => $request->description,
-            'image' => $request->image
+            'image' => $request->image->getClientOriginalName()
         ]);
+            
+        $file = $request->file('image');
+        $file->move("dataFile",$file->getClientOriginalName());
 
         return redirect('/banner');
     }
@@ -85,15 +88,19 @@ class BannersController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'image' => 'required'
+            'image' => 'required|image|mimes:jpeg,bmp,png|max:5000'
         ]);
 
         Banner::where('id', $banner->id)
                 ->update([
                     'name' => $request->name,
                     'description' => $request->description,
-                    'image' => $request->image
+                    'image' => $request->image->getClientOriginalName()
                 ]);
+        
+        $file = $request->file('image');
+        $file->move("dataFile",$file->getClientOriginalName());
+
         return redirect('/banner');
     }
 
@@ -106,6 +113,28 @@ class BannersController extends Controller
     public function destroy(banner $banner)
     {
         Banner::destroy($banner->id);
+        return redirect('/banner');
+    }
+
+    public function change(banner $banner)
+    {
+        return view('content.banner.change', compact('banner'));
+    }
+
+    public function changeImage(Request $request, banner $banner)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,bmp,png|max:5000'
+        ]);
+
+        Banner::where('id', $banner->id)
+                ->update([
+                    'image' => $request->image->getClientOriginalName()
+                ]);
+        
+        $file = $request->file('image');
+        $file->move("dataFile",$file->getClientOriginalName());
+
         return redirect('/banner');
     }
 }

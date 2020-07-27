@@ -25,3 +25,5 @@ Route::post('/banner', 'BannersController@store');
 Route::get('/banner/{banner}/edit', 'BannersController@edit');
 Route::patch('/banner/{banner}', 'BannersController@update');
 Route::delete('/banner/{banner}', 'BannersController@destroy');
+Route::get('/banner/{banner}/change', 'BannersController@change');
+Route::patch('/banner/{banner}/change', 'BannersController@changeImage');
